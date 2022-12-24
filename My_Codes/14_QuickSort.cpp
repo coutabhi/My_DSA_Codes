@@ -12,7 +12,7 @@
     Know my original array divides in two we have to sort  these parts
     After partitioning we have to just call quickSort recursively and all sorted
     So main thing is partition
-    int partitio(int input[], int si, int ei);
+    int partition(int input[], int si, int ei);
     void quickSort(int input[], int si, int ei){
         //Base case as merge
          call partition by call partiton function partition(input, si, ei);

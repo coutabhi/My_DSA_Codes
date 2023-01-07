@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//Functions
+//Functions Lectures notes and code
 #include<iostream>
 #include<algorithm>
 using namespace std;

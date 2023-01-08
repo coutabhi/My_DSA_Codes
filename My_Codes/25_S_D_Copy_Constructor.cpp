@@ -13,6 +13,9 @@ class Student{
         this->name = new char[strlen(name)+1];
         strcpy(this->name, name);
     }
+
+    //We have to use this as reference so that our value not copied again and again 
+    //by passing by reference we got the value as copied/
     Student(Student const &s){
         this->age = s.age;
         this->name = new char[strlen(s.name)+1];

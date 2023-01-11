@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//Arrays_and_Pointers
+//Arrays_and_Pointers notes by Abhishek Yadav 
 #include<iostream>
 using namespace std;
 

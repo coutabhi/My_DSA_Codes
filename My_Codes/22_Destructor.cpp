@@ -1,5 +1,5 @@
 // Code by Abhishek Yadav 👨🏻‍💻
-//Destructor
+//Destructor notes by Abhishek yadav
 #include<iostream>
 using namespace std;
 //Unlike constructor we cannot make more than one destructor

@@ -69,7 +69,7 @@ class Fraction{
         fNew.simplify();
         return fNew;
     }
-    Fraction multilpy(Fraction const&f2){
+    Fraction multilpy(Fraction const&f2) const{
         int n,d;
         n = numerator*f2.numerator;
         d = denominator*f2.denominator;
@@ -77,7 +77,7 @@ class Fraction{
         fNew.simplify();
         return fNew;
     }
-    Fraction operator*(Fraction const&f2){
+    Fraction operator*(Fraction const&f2) const{
         int n,d;
         n = numerator*f2.numerator;
         d = denominator*f2.denominator;
@@ -85,8 +85,15 @@ class Fraction{
         fNew.simplify();
         return fNew;
     }
-    Fraction operator++(){
-        
+    bool operator==(Fraction const&f2) const{
+        return (numerator == f2.numerator && denominator == f2.denominator);
+    }
+    //Pre-Increment
+    Fraction& operator++(){ //By returning reference Fraction the system not make buffer memory and then assign
+    //but actually increment on main this object.
+        numerator += denominator;
+        simplify();
+        return *this;
     }
 };
 int main(){
@@ -101,5 +108,21 @@ int main(){
     f4.print();
     Fraction f5 = f1*f2;
     f5.print();
+    if(f1==f2){
+        cout<<"Equal"<<endl;
+    }
+    else{
+        cout<<"Not Equal"<<endl;
+    }
+    
+    //For increment 
+    Fraction f6(10, 4);
+    f6.print();
+    ++f6;
+    f6.print();
+    Fraction f7 = ++f6;
+    f7.print();
+    ++(++f7);
+    f7.print();
     return 0;
 }

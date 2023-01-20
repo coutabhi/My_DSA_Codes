@@ -1,3 +1,6 @@
+//code by Abhishek Yadav👨🏻‍💻
+//Merge Sort Algo
+
 #include<iostream>
 using namespace std;
 

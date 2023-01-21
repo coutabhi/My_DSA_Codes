@@ -95,6 +95,38 @@ class Fraction{
         simplify();
         return *this;
     }
+    //Post Increment
+    Fraction operator++(int){
+        Fraction fNew(numerator, denominator);
+        numerator = numerator +denominator;
+        simplify();
+        fNew.simplify();
+        return fNew;
+    }
+    // += operator overloading
+
+    Fraction & operator+=(Fraction const &f2){
+        int lcm = denominator * f2.denominator;
+        int x = lcm/denominator;
+        int y = lcm/f2.denominator;
+        int num = x*numerator + (y*f2.numerator);
+        numerator = num;
+        denominator = lcm;
+        simplify();
+        return *this;
+    }
+
+    // -= operator
+    Fraction& operator-=(Fraction const &f2){
+        int lcm = denominator * f2.denominator;
+        int x = lcm/denominator;
+        int y = lcm/f2.denominator; 
+        int num = x*numerator -y*f2.numerator;
+        numerator = num;
+        denominator = lcm;
+        simplify();
+        return *this;
+    }
 };
 int main(){
     Fraction f1(10,2);
@@ -124,5 +156,14 @@ int main(){
     f7.print();
     ++(++f7);
     f7.print();
+
+    Fraction f8(2,3);
+    Fraction f9(4,2);
+    Fraction f10(5,4);
+    Fraction f11(3,4);
+    f8+=f9;
+    f10-=f11;
+    f8.print();
+    f9.print();
     return 0;
 }

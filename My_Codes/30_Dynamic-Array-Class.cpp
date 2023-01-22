@@ -2,6 +2,7 @@
 //Dynamic Array classes
 //We want array where we can increase or decrease it's size
 #include<iostream>
+#include<climits>
 using namespace std;
 
 class DynamicArray{
@@ -25,6 +26,17 @@ class DynamicArray{
         this->nextIndex = d.nextIndex;
         this->capacity = d.capacity;
     }
+
+    void operator=(DynamicArray const&d){
+        this->data = new int[d.capacity];
+        for(int i=0; i<d.nextIndex; i++){
+            this->data[i] = d.data[i];
+        }
+        this->nextIndex = d.nextIndex;
+        this->capacity = d.capacity;
+    }
+    
+
     void add(int element){
         if(nextIndex == capacity){
             int *newData = new int[2*capacity];
@@ -62,7 +74,52 @@ class DynamicArray{
         cout<<endl;
     }
 
+    DynamicArray merge(int input[], int si, int ei){
+        int size = ei - si + 1;
+        int mid = (si+ei)/2;
+        int* out = new int[size];
+        int i = si;
+        int j = mid + 1;            
+        int k = 0;
 
+        while (i<=mid && j<=ei)
+        {
+            if(input[i]<input[j]){
+                out[k] = input[i];
+                i++;
+                k++;
+            }
+            else{
+                out[k] = input[j];
+                j++;
+                k++;
+            }
+        }
+        //For remaining elements in arrary
+        while(i<=mid){
+            out[k] = input[i];
+            i++;
+            k++;
+        }
+        while(j<=ei){
+            out[k] = input[j];
+            k++;
+            j++;
+        }
+        int m=0;
+        for(int i=si; i<=ei; i++){
+            input[i] = out[m];
+            m++;
+        }
+    }  //EOF
+    DynamicArray sort(DynamicArray const&input, int si, int ei){
+        if(si>=ei){
+            return;
+        }
+        int mid = si +(ei-si)/2;
+        sort(input, si, mid);
+        sort(input, si, ei);   
+    }
 };
 
 int main(){

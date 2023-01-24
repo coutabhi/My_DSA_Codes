@@ -2,10 +2,11 @@
 using namespace std;
 
 class Polynomial{
+    public:
     int *degCoeff;
     int capacity;
     
-    public:
+    
     //default constructor
     Polynomial(){
         this->degCoeff = new int[6];
@@ -27,39 +28,87 @@ class Polynomial{
         this->capacity = p.capacity;
     }
 
-    void setCoefficient(int deg, int coef){
-        if(deg>capacity){
-            int newCapacity = deg;
-            int *newdeg = new int[newCapacity+1];
+    void setCoefficient(int deg, int coef) {
+      if (deg > capacity) {
+        int newcapacity = deg;
+        int *newdeg = new int[newcapacity + 1];
+        // Copy the contents from original to new
+        for (int i = 0; i <= capacity; i++)
+          newdeg[i] = degCoeff[i];
 
-            for(int i=0; i<=capacity; i++){
-                newdeg
-            }
-        }
+        this->degCoeff = newdeg;
+        this->capacity = newcapacity;
+        // Set the new coeff;
+        degCoeff[deg] = coef;
+      } else {
+        degCoeff[deg] = coef;
+      }
     }
 
     //Print
-
     void print(){
         for(int i=0; i<this->capacity; i++){
-            cout<<this->degCoeff<<"X"<<i<<" ";
+            if (degCoeff[i] != 0)
+            cout<<this->degCoeff[i]<<"X"<<i<<" ";
         }
         cout<<endl;
     }
-    //Add
 
+    //Add
     Polynomial operator+(Polynomial const&p1){
         int capacityM = max(this->capacity, p1.capacity);
         Polynomial out(capacityM);
-        for(int i=0; i<capacityM; i++){
-
-            out.degCoeff[i] = this->degCoeff[i] + p1.degCoeff[i];
+        for(int i=0; i<=capacityM; i++){
+            if (i <= capacity && i <= p1.capacity)
+                out.degCoeff[i] = this->degCoeff[i] + p1.degCoeff[i];
+            else if (i <= capacity)
+                out.degCoeff[i] = this->degCoeff[i];
+            else
+                out.degCoeff[i] = p1.degCoeff[i];
         }
+        return out;
     }    
 
+    //Subtract
+    Polynomial operator-(Polynomial const&p1){
+        int capacityM = max(this->capacity, p1.capacity);
+        Polynomial out(capacityM);
+        for(int i=0; i<=capacityM; i++){
+            if (i <= capacity && i <= p1.capacity)
+                out.degCoeff[i] = this->degCoeff[i] - p1.degCoeff[i];
+            else if (i <= capacity)
+                out.degCoeff[i] = this->degCoeff[i];
+            else
+                out.degCoeff[i] = -p1.degCoeff[i];
+        }
+        return out;
+    }    
 
+    //Multiply
+     Polynomial operator*(Polynomial const &P2) {
 
+      int newcap = this->capacity + P2.capacity;
+      Polynomial P3(newcap);
 
+      for (int i = 0; i <= this->capacity; i++) {
+
+        for (int j = 0; j <= P2.capacity; j++) {
+          P3.degCoeff[i + j] += this->degCoeff[i] * P2.degCoeff[j];
+        }
+      }
+      return P3;
+    }
+
+    void operator=(Polynomial const &p) {
+      int *newdeg = new int[p.capacity + 1];
+      // Copy the contents
+      for (int i = 0; i < p.capacity; i++)
+        newdeg[i] = p.degCoeff[i];
+
+      this->degCoeff = newdeg;
+
+      this->capacity = p.capacity;
+    }
 };
 
 int main(){
@@ -81,7 +130,7 @@ int main(){
     Polynomial first;
 
     for(int i=0; i<count1; i++){
-        first.setCoefficient(degree1[i].coeff1[i]);
+        first.setCoefficient(degree1[i], coeff1[i]);
     }
 
     cin>>count2;
@@ -99,7 +148,7 @@ int main(){
 
     Polynomial second;
     for(int i=0; i<count2; i++){
-        second.setCoefficient(degree2[i].coeff2[i]);
+        second.setCoefficient(degree2[i], coeff2[i]);
     }
 
     cin>>choice;

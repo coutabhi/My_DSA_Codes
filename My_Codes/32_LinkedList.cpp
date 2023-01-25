@@ -13,11 +13,17 @@ class Node{
 };
 
 void print(Node *head){
-    while(head!=NULL){
-        cout<<head->data<<" ";
-        head = head->next;
+    Node *temp = head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp = temp->next;
     }
+    temp = head;
     cout<<endl;
+    while(head!=NULL){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
 }
 
 int main(){
@@ -35,6 +41,7 @@ int main(){
     n3.next =&n4;
     n4.next =&n5;
     //Print
+    print(head);
     print(head);
     // Simply printing we will see in next code how can we print Whole linked list just by head
     // cout<<n1.data<<" "<<n2.data<<endl;

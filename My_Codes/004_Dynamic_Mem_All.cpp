@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//Dynamic memory allocation
+//Dynamic memory allocation code with explanation
 #include<iostream>
 #include<climits>
 using namespace std;

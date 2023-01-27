@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//Binary Search
+//Binary Search notes after learning from CN
 #include<iostream>
 #include "000_selection_Sort.h"
 using namespace std;

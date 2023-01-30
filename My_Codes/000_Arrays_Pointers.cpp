@@ -9,5 +9,5 @@ int main(){
     cout<<a<<" "<<a+1<<endl;
     cout<<*ptr<<" "<<*ptr+1<<*ptr+2<<*ptr+3<<*ptr+4<<endl;
     cout<<*a<<" "<<*a+1<<*a+2<<*a+3<<*a+4<<endl;
-    
+return 0;
 }

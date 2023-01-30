@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//Star Pattern
+//Star Pattern notes you can take reference
 #include<iostream>
 using namespace std;
 int main()

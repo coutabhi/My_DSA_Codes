@@ -1,5 +1,5 @@
 //Code by Abhishek Yadav 👨🏻‍💻
-//TypeCasting
+//TypeCasting lecture notes with code
 #include<iostream>
 using namespace std;
 

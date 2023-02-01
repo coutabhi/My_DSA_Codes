@@ -8,7 +8,7 @@ int n, s, i, j;
 cin >> n;
 for(i = 1; i <= n; i++)
 {
-//for loop for displaying space
+//for loop for displaying space in op
 for(s = i; s < n; s++)
 {
 cout << " ";
